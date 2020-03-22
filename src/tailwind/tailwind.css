@@ -9264,6 +9264,22 @@ video {
   text-align: justify;
 }
 
+.hover\:text-left:hover {
+  text-align: left;
+}
+
+.hover\:text-center:hover {
+  text-align: center;
+}
+
+.hover\:text-right:hover {
+  text-align: right;
+}
+
+.hover\:text-justify:hover {
+  text-align: justify;
+}
+
 .text-transparent {
   color: transparent;
 }
@@ -21895,6 +21911,22 @@ video {
   }
 
   .sm\:text-justify {
+    text-align: justify;
+  }
+
+  .sm\:hover\:text-left:hover {
+    text-align: left;
+  }
+
+  .sm\:hover\:text-center:hover {
+    text-align: center;
+  }
+
+  .sm\:hover\:text-right:hover {
+    text-align: right;
+  }
+
+  .sm\:hover\:text-justify:hover {
     text-align: justify;
   }
 
@@ -34533,6 +34565,22 @@ video {
     text-align: justify;
   }
 
+  .md\:hover\:text-left:hover {
+    text-align: left;
+  }
+
+  .md\:hover\:text-center:hover {
+    text-align: center;
+  }
+
+  .md\:hover\:text-right:hover {
+    text-align: right;
+  }
+
+  .md\:hover\:text-justify:hover {
+    text-align: justify;
+  }
+
   .md\:text-transparent {
     color: transparent;
   }
@@ -47168,6 +47216,22 @@ video {
     text-align: justify;
   }
 
+  .lg\:hover\:text-left:hover {
+    text-align: left;
+  }
+
+  .lg\:hover\:text-center:hover {
+    text-align: center;
+  }
+
+  .lg\:hover\:text-right:hover {
+    text-align: right;
+  }
+
+  .lg\:hover\:text-justify:hover {
+    text-align: justify;
+  }
+
   .lg\:text-transparent {
     color: transparent;
   }
@@ -59800,6 +59864,22 @@ video {
   }
 
   .xl\:text-justify {
+    text-align: justify;
+  }
+
+  .xl\:hover\:text-left:hover {
+    text-align: left;
+  }
+
+  .xl\:hover\:text-center:hover {
+    text-align: center;
+  }
+
+  .xl\:hover\:text-right:hover {
+    text-align: right;
+  }
+
+  .xl\:hover\:text-justify:hover {
     text-align: justify;
   }
 

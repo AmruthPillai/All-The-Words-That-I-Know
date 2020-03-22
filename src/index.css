@@ -2,3 +2,7 @@ html,
 body {
   font-family: 'Sen', sans-serif;
 }
+
+.blur {
+  filter: blur(6px);
+}

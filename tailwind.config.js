@@ -9,6 +9,8 @@ module.exports = {
       center: true,
     },
   },
-  variants: {},
+  variants: {
+    textAlign: ['responsive', 'hover'],
+  },
   plugins: [],
 };
