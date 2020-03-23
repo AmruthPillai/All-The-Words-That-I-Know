@@ -2,12 +2,17 @@
 import { useRef } from 'react';
 
 const useFocus = () => {
-  const htmlElRef = useRef(null);
-  const setFocus = () => {
-    htmlElRef.current && htmlElRef.current.focus();
+  const ref = useRef(null);
+
+  const focus = () => {
+    ref.current && ref.current.focus();
   };
 
-  return [htmlElRef, setFocus];
+  const blur = () => {
+    ref.current && ref.current.blur();
+  };
+
+  return [ref, focus, blur];
 };
 
 export default useFocus;
