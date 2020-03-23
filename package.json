@@ -13,11 +13,14 @@
   },
   "scripts": {
     "tailwind": "tailwind build src/tailwind/tailwind.src.css -o src/tailwind/tailwind.css",
-    "start": "npm run tailwind && react-scripts start",
-    "build": "npm run tailwind && react-scripts build",
+    "prestart": "npm run tailwind",
+    "start": "react-scripts start",
+    "prebuild": "npm run tailwind",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && firebase deploy"
+    "predeploy": "npm run build",
+    "deploy": "firebase deploy"
   },
   "husky": {
     "hooks": {

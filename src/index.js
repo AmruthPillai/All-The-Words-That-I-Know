@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { register } from './serviceWorker';
+import * as serviceWorker from './serviceWorker';
 import './tailwind/tailwind.css';
 import './index.css';
 
@@ -18,4 +18,4 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-register();
+serviceWorker.register();
