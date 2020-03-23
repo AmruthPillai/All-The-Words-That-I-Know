@@ -4,6 +4,21 @@ import React, { useState, useReducer, useMemo } from 'react';
 import useFocus from '../../hooks/useFocus';
 import words from './words.json';
 
+const GAME_CONFIG = {
+  easy: {
+    timer: 30,
+    minLength: 3,
+  },
+  medium: {
+    timer: 45,
+    minLength: 6,
+  },
+  hard: {
+    timer: 60,
+    minLength: 8,
+  },
+};
+
 const initialState = {
   error: '',
   status: 'stopped', // values: 'stopped' | 'playing' | 'game_over'
@@ -42,9 +57,10 @@ const reducer = (state, action) => {
 
 const Game = () => {
   let tickerRef = null;
-  const [minLength, setMinLength] = useState(3);
   const [difficulty, setDifficulty] = useState('easy');
-  const [timeRemaining, setTimeRemaining] = useState(10);
+  const [minLength, setMinLength] = useState(GAME_CONFIG.easy.minLength);
+  const [timeRemaining, setTimeRemaining] = useState(GAME_CONFIG.easy.timer);
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const validateInput = useMemo(() => {
@@ -134,7 +150,9 @@ const Game = () => {
   };
 
   const restartGame = () => {
-    setTimeRemaining(minLength);
+    setDifficulty('easy');
+    setTimeRemaining(GAME_CONFIG.easy.timer);
+
     dispatch({ type: 'reset_game' });
     dispatch({ type: 'game_status', payload: 'stopped' });
   };
