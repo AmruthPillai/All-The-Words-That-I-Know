@@ -5,15 +5,23 @@ import useFocus from '../../hooks/useFocus';
 import words from './words.json';
 
 const GAME_CONFIG = {
+  lazy: {
+    key: 'lazy',
+    timer: 0,
+    minLength: 3,
+  },
   easy: {
+    key: 'easy',
     timer: 30,
     minLength: 3,
   },
   medium: {
+    key: 'medium',
     timer: 45,
     minLength: 6,
   },
   hard: {
+    key: 'hard',
     timer: 60,
     minLength: 8,
   },
@@ -141,6 +149,8 @@ const Game = () => {
     dispatch({ type: 'game_status', payload: 'playing' });
     setInputFocus();
 
+    if (difficulty === 'lazy') return;
+
     tickerRef = setInterval(() => {
       setTimeRemaining((prev) => {
         if (prev > 1) return prev - 1;
@@ -203,8 +213,8 @@ const Game = () => {
             <h3 className="mt-2 font-bold text-red-600 text-4xl">{numIncorrect}</h3>
           </div>
           <div
-            className="col-span-2 md:col-span-1 mt-4 md:mt-0
-          shadow md:shadow-md text-center rounded p-6"
+            className={`col-span-2 md:col-span-1 mt-4 md:mt-0
+          shadow md:shadow-md text-center rounded p-6 ${difficulty === 'lazy' && 'opacity-25'}`}
           >
             <h6 className="text-xs uppercase font-bold text-gray-500">Time Remaining</h6>
             <h3 className="mt-2 font-bold text-blue-600 text-4xl">{formattedTimeRemaining}</h3>
@@ -244,23 +254,37 @@ const Game = () => {
             <button
               type="button"
               onClick={() => {
-                setDifficulty('easy');
-                setMinLength(3);
-                setTimeRemaining(30);
+                setDifficulty(GAME_CONFIG.lazy.key);
+                setMinLength(GAME_CONFIG.lazy.minLength);
+                setTimeRemaining(GAME_CONFIG.lazy.timer);
+              }}
+              className={`${
+                difficulty === 'lazy' ? 'bg-gray-500' : 'bg-gray-300'
+              } hover:bg-gray-500 focus:outline-none text-gray-800
+              py-2 px-4 text-sm rounded-l`}
+            >
+              Lazy
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setDifficulty(GAME_CONFIG.easy.key);
+                setMinLength(GAME_CONFIG.easy.minLength);
+                setTimeRemaining(GAME_CONFIG.easy.timer);
               }}
               className={`${
                 difficulty === 'easy' ? 'bg-gray-500' : 'bg-gray-300'
               } hover:bg-gray-500 focus:outline-none text-gray-800
-              py-2 px-4 text-sm rounded-l`}
+              py-2 px-4 text-sm`}
             >
               Easy
             </button>
             <button
               type="button"
               onClick={() => {
-                setDifficulty('medium');
-                setMinLength(6);
-                setTimeRemaining(45);
+                setDifficulty(GAME_CONFIG.medium.key);
+                setMinLength(GAME_CONFIG.medium.minLength);
+                setTimeRemaining(GAME_CONFIG.medium.timer);
               }}
               className={`${
                 difficulty === 'medium' ? 'bg-gray-500' : 'bg-gray-300'
@@ -272,9 +296,9 @@ const Game = () => {
             <button
               type="button"
               onClick={() => {
-                setDifficulty('hard');
-                setMinLength(8);
-                setTimeRemaining(60);
+                setDifficulty(GAME_CONFIG.hard.key);
+                setMinLength(GAME_CONFIG.hard.minLength);
+                setTimeRemaining(GAME_CONFIG.hard.timer);
               }}
               className={`${
                 difficulty === 'hard' ? 'bg-gray-500' : 'bg-gray-300'
